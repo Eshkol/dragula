@@ -113,6 +113,10 @@ function dragula (initialContainers, options) {
         e.preventDefault(); // fixes https://github.com/bevacqua/dragula/issues/155
       }
     }
+	
+	if(item.setCapture) { 
+      item.setCapture();
+    }
   }
 
   function startBecauseMouseMoved (e) {
@@ -248,6 +252,8 @@ function dragula (initialContainers, options) {
     } else {
       cancel();
     }
+	
+	if(elementBehindCursor.releaseCapture) { elementBehindCursor.releaseCapture();}
   }
 
   function drop (item, target) {
